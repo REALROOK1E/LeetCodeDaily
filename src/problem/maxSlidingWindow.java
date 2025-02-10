@@ -1,6 +1,7 @@
 package problem;
 
 import java.util.Arrays;
+import java.util.Deque;
 
 /**
  * @author: ZeKai
@@ -8,6 +9,7 @@ import java.util.Arrays;
  * @description:
  **/
 public class maxSlidingWindow {
+
 
           static int maxink (int[] arr, int l, int r) {
               int max = arr[l];
