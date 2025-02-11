@@ -1,5 +1,6 @@
 package problem;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 
@@ -10,48 +11,29 @@ import java.util.Deque;
  **/
 public class maxSlidingWindow {
 
-
-          static int maxink (int[] arr, int l, int r) {
-              int max = arr[l];
-
-              // 遍历从 l 到 r 的范围，找到最大值
-              for (int i = l + 1; i <= r; i++) {
-                  if (arr[i] > max) {
-                      max = arr[i];
-
-                  }
-
-              }
-            return max;
-        }
-
         public static int[] maxSlidingWindow(int[] nums, int k) {
-            int max=maxink(nums,0,k-1);
-            int[] res=new int[nums.length-k+1];
-            int l=0;
-            int r=k-1;
+            if(nums == null || nums.length == 0) return new int[0];
+            int[] res = new int[nums.length - k + 1];
+            Deque<Integer> deque = new ArrayDeque<>();
+            for (int i = 0; i < nums.length; i++) {
 
-            res[0] = max;
-            if (k==nums.length) return res;
+                while (!deque.isEmpty() && deque.peekFirst()<i-k+1) {
+                    deque.pollFirst();
 
-           while(r<nums.length-1) {
-               r++;
-               if (nums[r]>=max) {
-                   max=nums[r];
-                   System.out.println("直接"+max);
-                   l++;
-               }else  {
-                   if(nums[l]==max)
-                     max = maxink(nums, l+1 , r);
-                   l++;
-                   System.out.println("重新算" + max);
-               }
-               res[l]=max;
+                }
+                while(!deque.isEmpty() && nums[i]>nums[deque.peekLast()]) {
+                    deque.pollLast();
+                }
+                deque.addLast(i);
 
+                if(i-k+1>0){
+                    res[i-k+1] = nums[deque.peekFirst()];
+                }
 
-           }
-            System.out.println(Arrays.toString(res));
+            }
             return res;
+
+
         }
 
 
