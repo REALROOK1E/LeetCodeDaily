@@ -17,24 +17,13 @@ Stack <Integer> stack=new Stack();
 
     public void push(Integer val) {
           stack.push(val);
-          if(minStack.isEmpty()) minStack.push(val);
-          else if(minStack.peek()>val) minStack.push(val);
-          else {
-              int temp = minStack.peek();
-              minStack.pop();
-              minStack.push(val);
-              minStack.push(temp);
-    }}
+          if(minStack.isEmpty()||val<minStack.peek()) minStack.push(val);
+          else minStack.push(minStack.peek());
+          }
 
     public void pop() {
-      int p=stack.pop();
-      if(p==minStack.peek()) minStack.pop();
-      else {
-          int temp = minStack.peek();
-          minStack.pop();
-         minStack.pop();
-          minStack.push(temp);
-      }
+      stack.pop();
+      minStack.pop();
     }
 
     public Integer top() {
