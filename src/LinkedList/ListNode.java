@@ -1,3 +1,5 @@
+package LinkedList;
+
 /**
  * @author: ZeKai
  * @date: 2025/2/12
@@ -12,7 +14,7 @@ public class ListNode {
 
       @Override
       public String toString() {
-            return "ListNode{" +
+            return
                     "val=" + val +
                     ", next=" + next +
                     '}';

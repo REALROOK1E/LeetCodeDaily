@@ -1,17 +1,15 @@
-/**
+package LinkedList; /**
  * @author: ZeKai
  * @date: 2025/2/12
  * @description:
  **/
 
-import java.util.Objects;
-
-/**public class ListNode {
+/**public class LinkedList.ListNode {
  *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ *     LinkedList.ListNode next;
+ *     LinkedList.ListNode() {}
+ *     LinkedList.ListNode(int val) { this.val = val; }
+ *     LinkedList.ListNode(int val, LinkedList.ListNode next) { this.val = val; this.next = next; }
  * }**/
 public class Addtwonumbers {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
