@@ -7,16 +7,16 @@ package LinkedList;
  **/
 public class ListNode {
       int val;
+      ListNode random;
       ListNode next;
       ListNode() {}
       ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; this.random = null;}
 
       @Override
       public String toString() {
             return
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
+                     val +
+                    "->" + next ;
       }
 }
