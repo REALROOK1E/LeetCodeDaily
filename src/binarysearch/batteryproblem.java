@@ -24,6 +24,7 @@ public class batteryproblem {
         for(int i:batteries){
             r+=i;
         }
+
         while(l<=r){
            long mid=l+(r-l)/2;
            if(isenough(n,batteries,mid)){
@@ -34,28 +35,40 @@ public class batteryproblem {
 
      return ans;
     }
-    public static boolean isenough(int n, int[] batteries,long time) {
-        long count=0;
 
+    public static boolean isenough(int n, int[] batteries,long time) {
+        long count=0;//计数器，为什么？因为我要看time时间够不够n个电脑在batteries电量运行
         int r=batteries.length-1;
         while(batteries[r]>=time&&r>0){
-            count++;
+            count++;//比我理论最大的时间的供电量还打，那我肯定至少充了一个
             r--;
         }
+
         long e=0;
        while(r>=0){
-           e+=batteries[r];
-           r--;
+           e+=batteries[r--];
        }
+
         count+=time==0?1:e/time;
 
         return count>=n;
-
     }
 
+
+     /*
+     8-9
+     1，3,4,7,10
+     最大12
+     9-12   11
+     max 9  取一个7先试试
+     2.2,2,2,5  //1
+    */
+
+
+
     public static void main(String[] args) {
-        int[] batteries = {1};
-        maxRunTime(1,batteries);
+        int[] batteries = {1,3,4,7,10};
+        maxRunTime(2,batteries);
 
     }
 }

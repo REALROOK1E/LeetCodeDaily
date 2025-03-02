@@ -1,4 +1,4 @@
-package Array;
+package Array.twopointer;
 
 import java.util.Arrays;
 
@@ -7,11 +7,12 @@ import java.util.Arrays;
  * @date: 2025/2/18
  * @description:
  **/
-public class sortbyparity {
+public class    sortbyparity {
     public static int[] sortArrayByParityII(int[] nums) {
         int even=0;
         int odd=1;
         int i=nums.length-1;
+        //题目要求按照单双数把数组分隔开，用一个i在后面座位工作位，两个指针分别对应单双数，用工作位数字判定，分别换到指针上上肉+2
         while(even<nums.length&&odd<nums.length){
             int temp;
             if(nums[i]%2!=0) {
