@@ -8,8 +8,10 @@ package binarysearch;
 public class aplitarray {
     public static  int splitArray(int[] nums, int k) {
     //分析单调性，判断是不是二分问题
+
         //最小就是0，最大是数组的所有sum
         //和顺序无关
+        //不要先入为主，给的那个常数是用来构建答案的
         //我大胆的猜测，辅助函数就是利用给定的参数表示答案
         //比如：这里要求固定分成k个组，那我的函数目的就要算k在一个范围内能不能分成功，在所有的范围内进行二分
         //也就是说，这里函数接受一个arr，一个k，假定一个组有x人，看能不能分成功

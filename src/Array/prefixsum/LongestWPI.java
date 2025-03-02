@@ -21,7 +21,6 @@ public class LongestWPI {
      int ans=0;
      int i=0;
             HashMap<Integer,Integer> map=new HashMap<>();
-
             for (; i < hours.length; i++) {
                 if(hours[i]>8) {num++;}
                 else {num--;}
