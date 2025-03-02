@@ -1,10 +1,6 @@
 package DSdesign;
 
-/**
- * @author: ZeKai
- * @date: 2025/3/2
- * @description:
- **/
+
 public class numberof1bits {
     public int hammingWeight(int n) {
      int res=0;
@@ -13,5 +9,9 @@ public class numberof1bits {
          n>>=1;
      }
      return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new numberof1bits().hammingWeight(1));
     }
 }
