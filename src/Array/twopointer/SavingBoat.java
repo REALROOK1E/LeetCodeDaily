@@ -1,4 +1,4 @@
-package Array;
+package Array.twopointer;
 
 import java.util.Arrays;
 
@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class SavingBoat {
     public static int numRescueBoats(int[] people, int limit) {
         Arrays.sort(people);//1355
+        //最多坐limit个人，最少几艘船可以送过去？
 
        int l=0;
        int r=people.length-1;
