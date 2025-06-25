@@ -6,5 +6,4 @@ package slidingwindow;
  * @description:
  **/
 public class minsubarrlen {
-    int i;
 }
