@@ -6,4 +6,5 @@ package slidingwindow;
  * @description:
  **/
 public class noduplicateChar {
+
 }
