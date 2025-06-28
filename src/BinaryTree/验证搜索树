@@ -1,0 +1,12 @@
+public class 验证搜索树{
+public boolean isValidBST(TreeNode root) {
+    return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+}
+public boolean helper(TreeNode node, long min, long max) {
+
+    if(node==null) return ture;
+    if(node.val>=max||node.val<min) return false;
+    return helper(root.left,min,node.val)&&helper(root.right,node.val,max);
+}
+}
+

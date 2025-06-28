@@ -19,10 +19,8 @@ public class BFS {
 
     q[r++]=root;//把根加到队列里
         while(l<r){
-
             int size=r-l;
             ArrayList <Integer> list=new ArrayList<>();
-
             for(int i=0;i<size;i++){ //以下操作循环size次
                 TreeNode crr=q[l++];//这一步是弹出，
                 list.add(crr.val);
@@ -34,7 +32,7 @@ public class BFS {
 
         return ans;
     }
-
+ 
 
     public static void main(String[] args) {
         TreeNode node1=new TreeNode();

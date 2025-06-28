@@ -1,0 +1,28 @@
+public class MonoQueue {
+
+
+int l=0;
+int r=0;
+int [] arr {5,2,6,3,7,4,9}; 
+//r-l就是队列长度
+
+public void MonoQ(int [] arr){
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+
+

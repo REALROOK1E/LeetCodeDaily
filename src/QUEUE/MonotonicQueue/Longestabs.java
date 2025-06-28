@@ -1,4 +1,4 @@
-package slidingwindow.MonotonicQueue;
+package QUEUE.MonotonicQueue;
 
 /**
  * @author: ZeKai

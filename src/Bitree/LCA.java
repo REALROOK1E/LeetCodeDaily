@@ -23,7 +23,6 @@ public class LCA {
         if(Math.min(p.val,q.val)>root.val) return LCAinsearchTree(root.right, p, q);
         if(Math.max(p.val,q.val)<root.val) return LCAinsearchTree(root.right, p, q);
         return null;
-      
     }
 
     public static void main(String[] args) {
