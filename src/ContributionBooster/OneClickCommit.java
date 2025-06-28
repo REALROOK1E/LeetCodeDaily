@@ -18,21 +18,34 @@ public class OneClickCommit {
     public static void main(String[] args) {
         System.out.println("=== 一键自动提交程序 ===");
         
-        try {
-            // 1. 运行AutoCommit生成内容
-            System.out.println("1. 生成代码和文件...");
-            AutoCommit.main(args);
-            
-            // 2. 执行Git命令
-            System.out.println("\n2. 执行Git提交...");
-            executeGitCommands();
-            
-            System.out.println("\n=== 一键提交完成！===");
-            
-        } catch (Exception e) {
-            System.err.println("一键提交失败: " + e.getMessage());
-            e.printStackTrace();
+        // 自动执行10次
+        for (int i = 0; i < 10; i++) {
+            try {
+                System.out.println("\n--- 第 " + (i + 1) + " 次执行 ---");
+                
+                // 1. 运行AutoCommit生成内容
+                System.out.println("1. 生成代码和文件...");
+                AutoCommit.main(args);
+                
+                // 2. 执行Git命令
+                System.out.println("\n2. 执行Git提交...");
+                executeGitCommands();
+                
+                System.out.println("第 " + (i + 1) + " 次执行完成！");
+                
+                // 等待2秒再执行下一次
+                if (i < 9) { // 最后一次不需要等待
+                    System.out.println("等待2秒后执行下一次...");
+                    Thread.sleep(2000);
+                }
+                
+            } catch (Exception e) {
+                System.err.println("第 " + (i + 1) + " 次执行失败: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
+        
+        System.out.println("\n=== 10次自动执行完成！===");
     }
     
     private static void executeGitCommands() throws Exception {
