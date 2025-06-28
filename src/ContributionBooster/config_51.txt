@@ -1,0 +1,4 @@
+# 自动生成的配置文件
+version=5.7.8
+timestamp=1751148468023
+random_value=910
