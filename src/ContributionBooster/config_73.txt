@@ -1,0 +1,4 @@
+# 自动生成的配置文件
+version=4.8.0
+timestamp=1751070037693
+random_value=766
