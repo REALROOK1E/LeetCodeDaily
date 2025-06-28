@@ -1,0 +1,4 @@
+# 自动生成的配置文件
+version=8.0.2
+timestamp=1751070017510
+random_value=270
