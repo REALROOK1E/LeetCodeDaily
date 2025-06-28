@@ -1,0 +1,1 @@
+\npackage ContributionBooster;\n\nimport java.util.Random;\n\n/**\n * 随机代码生成�?\n * 生成�?\n */\npublic class RandomCode {\n\n    private static final Random random = new Random();\n\n    public static void main(String[] args) {\n        System.out.println(\
