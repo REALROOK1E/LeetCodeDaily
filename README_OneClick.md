@@ -34,16 +34,16 @@
 ### 方法二：直接运行Java程序
 ```bash
 # 编译
-javac -cp . src/ContributionBooster/*.java
+javac -cp . src/左神.ContributionBooster/*.java
 
 # 运行快速启动器
-java -cp . ContributionBooster.QuickStart
+java -cp . 左神.ContributionBooster.QuickStart
 
 # 或直接运行一键提交
-java -cp . ContributionBooster.OneClickCommit
+java -cp . 左神.ContributionBooster.OneClickCommit
 
 # 或批量执行
-java -cp . ContributionBooster.OneClickCommit batchOneClickCommit 10
+java -cp . 左神.ContributionBooster.OneClickCommit batchOneClickCommit 10
 ```
 
 ## 生成的功能程序类型
@@ -103,17 +103,17 @@ docs: 更新文档 - 添加ArrayHelper功能 - 2024-01-15 #789
 ```
 === 一键启动程序 ===
 自动生成Java小功能程序并提交到GitHub
-创建文件: src/ContributionBooster/Calculator.java
+创建文件: src/左神.ContributionBooster/Calculator.java
 更新现有文件...
-  更新文件: src/ContributionBooster/DailyCommit.java
-  更新文件: src/ContributionBooster/RandomCode.java
-  更新文件: src/ContributionBooster/CommitHelper.java
+  更新文件: src/左神.ContributionBooster/DailyCommit.java
+  更新文件: src/左神.ContributionBooster/RandomCode.java
+  更新文件: src/左神.ContributionBooster/CommitHelper.java
 执行Git操作...
   git add . 完成
   git commit 完成
   git push 完成
 === 操作完成 ===
-生成的文件: src/ContributionBooster/Calculator.java
+生成的文件: src/左神.ContributionBooster/Calculator.java
 提交信息: feat: 添加新功能 - 添加Calculator功能 - 2024-01-15 #123
 已自动提交到GitHub
 ```

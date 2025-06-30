@@ -9,7 +9,7 @@ echo.
 
 REM 编译Java文件
 echo 1. 编译Java文件...
-javac -cp . src/ContributionBooster/*.java
+javac -cp . src/左神.ContributionBooster/*.java
 if %errorlevel% neq 0 (
     echo 编译失败，请检查Java环境
     pause
@@ -30,16 +30,16 @@ set /p choice="请选择 (1-3): "
 
 if "%choice%"=="1" (
     echo 启动快速启动器...
-    java -cp . ContributionBooster.QuickStart
+    java -cp . 左神.ContributionBooster.QuickStart
 ) else if "%choice%"=="2" (
     echo 执行一键生成代码并提交...
-    java -cp . ContributionBooster.OneClickCommit
+    java -cp . 左神.ContributionBooster.OneClickCommit
 ) else if "%choice%"=="3" (
     echo 执行批量提交（10次）...
-    java -cp . ContributionBooster.OneClickCommit batchOneClickCommit 10
+    java -cp . 左神.ContributionBooster.OneClickCommit batchOneClickCommit 10
 ) else (
     echo 无效选择，启动快速启动器...
-    java -cp . ContributionBooster.QuickStart
+    java -cp . 左神.ContributionBooster.QuickStart
 )
 
 echo.
