@@ -34,31 +34,34 @@ public class OneClickCommit {
         System.out.println("=== 一键启动程序 ===");
         System.out.println("自动生成Java小功能程序并提交到GitHub");
         
-        try {
-            // 1. 生成Java小功能程序
-            String generatedCode = generateJavaFunction();
-            
-            // 2. 创建文件
-            String fileName = createJavaFile(generatedCode);
-            
-            // 3. 更新现有文件
-            updateExistingFiles();
-            
-            // 4. 生成提交信息
-            String commitMessage = generateCommitMessage();
-            
-            // 5. 执行Git操作
-            executeGitOperations(commitMessage);
-            
-            System.out.println("=== 操作完成 ===");
-            System.out.println("生成的文件: " + fileName);
-            System.out.println("提交信息: " + commitMessage);
-            System.out.println("已自动提交到GitHub");
-            
-        } catch (Exception e) {
-            System.err.println("操作失败: " + e.getMessage());
-            e.printStackTrace();
+        for (int i = 0; i < 10; i++) {
+            try {
+                // 1. 生成Java小功能程序
+                String generatedCode = generateJavaFunction();
+                
+                // 2. 创建文件
+                String fileName = createJavaFile(generatedCode);
+                
+                // 3. 更新现有文件
+                updateExistingFiles();
+                
+                // 4. 生成提交信息
+                String commitMessage = generateCommitMessage();
+                
+                // 5. 执行Git操作
+                executeGitOperations(commitMessage);
+                
+                System.out.println("=== 操作完成 ===");
+                System.out.println("生成的文件: " + fileName);
+                System.out.println("提交信息: " + commitMessage);
+                System.out.println("已自动提交到GitHub");
+                
+            } catch (Exception e) {
+                System.err.println("操作失败: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
+      
     }
     
     /**
