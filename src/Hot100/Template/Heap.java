@@ -1,5 +1,7 @@
 package Hot100.Template;
 
+import 左神.Array.findduplicate;
+
 public class Heap {
     
 }
@@ -12,5 +14,9 @@ class Solution {
 
 
         return q[k-1]; 
+    }
+
+    public static void main(String[] args) {
+        findduplicat
     }
 }
