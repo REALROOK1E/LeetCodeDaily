@@ -11,6 +11,8 @@ class Solution {
         //我知道应该用堆的
         //长度为k的单调队列的最后一个
         int [] q=new int[k];
+        int l=0;
+        int 
 
 
         return q[k-1]; 
