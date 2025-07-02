@@ -17,17 +17,35 @@ public class OneClickCommit {
         "MathHelper", "ValidationUtils", "SortHelper", "SearchUtils", "DataConverter"
     };
     
-    private static final String[] COMMIT_MESSAGES = {
-        "feat: 添加新功能",
-        "fix: 修复bug", 
-        "docs: 更新文档",
-        "style: 代码格式调整",
-        "refactor: 重构代码",
-        "test: 添加测试用例",
-        "chore: 日常维护",
-        "perf: 性能优化",
-        "ci: 持续集成配置",
-        "build: 构建系统更新"
+    private static final String[] TYPES = {
+        "feat", "fix", "docs", "style", "refactor", "test", "chore", "perf", "ci", "build",
+        "improve", "update", "remove", "add", "optimize", "cleanup", "hotfix", "merge", "split", "review"
+    };
+    private static final String[] SCOPES = {
+        "core", "utils", "api", "service", "controller", "config", "model", "view", "helper", "task",
+        "database", "security", "network", "ui", "backend", "frontend", "scheduler", "logger", "cache", "monitor"
+    };
+    private static final String[] EMOJIS = {
+        "✨", "🐛", "📝", "🎨", "🔨", "✅", "🔧", "🚀", "📦", "🔄", "🔥", "💡", "🧹", "🛠️", "🔍", "🔗", "📈", "📉", "🔔", "🧪", "🧩"
+    };
+    private static final String[] DETAILS = {
+        "优化了代码结构", "修复了潜在bug", "增加了单元测试", "完善了文档说明", "调整了配置项", "提升了性能", "重构了部分模块", "增加了新功能", "删除了无用代码", "更新了依赖库",
+        "完善了异常处理", "增加了日志输出", "调整了接口参数", "优化了数据库操作", "改进了用户体验", "修复了边界条件", "增加了输入校验", "优化了内存使用", "提升了启动速度", "增强了安全性",
+        "增加了多线程支持", "优化了缓存机制", "完善了测试覆盖率", "调整了页面布局", "修复了兼容性问题", "增加了国际化支持", "优化了API文档", "调整了定时任务", "优化了数据结构", "增加了配置项说明"
+    };
+    private static final String[] MOODS = {
+        "今天进度不错", "代码写得很顺", "debug了一下午", "灵感爆棚", "有点困", "喝了杯咖啡", "效率爆表", "遇到点小问题", "一切顺利", "继续加油",
+        "心情愉快", "状态在线", "专注开发", "收获满满", "解决了难题", "小有成就", "保持耐心", "持续优化", "团队协作愉快", "期待上线"
+    };
+    private static final String[] DEVELOPERS = {
+        "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", "Ivan", "Judy",
+        "Mallory", "Niaj", "Olivia", "Peggy", "Rupert", "Sybil", "Trent", "Victor", "Walter", "Yvonne"
+    };
+    private static final String[] FILES = {
+        "Calculator.java", "StringUtils.java", "ArrayHelper.java", "DateUtils.java", "FileProcessor.java",
+        "MathHelper.java", "ValidationUtils.java", "SortHelper.java", "SearchUtils.java", "DataConverter.java",
+        "UserService.java", "OrderController.java", "ConfigManager.java", "Logger.java", "CacheService.java",
+        "NetworkClient.java", "Scheduler.java", "Monitor.java", "ApiGateway.java", "SecurityFilter.java"
     };
     
     public static void main(String[] args) {
@@ -285,11 +303,22 @@ public class OneClickCommit {
      * 生成提交信息
      */
     private static String generateCommitMessage() {
-        String baseMessage = COMMIT_MESSAGES[random.nextInt(COMMIT_MESSAGES.length)];
-        String timestamp = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String type = TYPES[random.nextInt(TYPES.length)];
+        String scope = SCOPES[random.nextInt(SCOPES.length)];
+        String emoji = EMOJIS[random.nextInt(EMOJIS.length)];
+        String detail = DETAILS[random.nextInt(DETAILS.length)];
+        String mood = MOODS[random.nextInt(MOODS.length)];
         String functionName = FUNCTION_NAMES[random.nextInt(FUNCTION_NAMES.length)];
-        
-        return baseMessage + " - 添加" + functionName + "功能 - " + timestamp + " #" + random.nextInt(1000);
+        String developer = DEVELOPERS[random.nextInt(DEVELOPERS.length)];
+        String file = FILES[random.nextInt(FILES.length)];
+        String timestamp = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        int ticket = 100 + random.nextInt(900);
+
+        return String.format(
+            "%s(%s): %s - %s [%s] %s #%d | by %s | 文件: %s | %s %s | %s",
+            type, scope, detail, functionName, timestamp, emoji, ticket, developer, file, time, mood, "自动生成提交信息"
+        );
     }
     
     /**
