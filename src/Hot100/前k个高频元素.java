@@ -9,6 +9,6 @@ class Solution {
 
 
     public static void main(String[] args) {
-        top
+        topKFrequent(new int[] {}, 0)
     }
 }
