@@ -1,8 +1,14 @@
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
+    public static int[] topKFrequent(int[] nums, int k) {
          PriorityQueue<ListNode> pq = new PriorityQueue<>((a,b)->a-b);
     }
+
+
+
+
+
+
     public static void main(String[] args) {
-        
+        top
     }
 }

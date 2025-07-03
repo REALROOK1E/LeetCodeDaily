@@ -5,17 +5,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * SearchUtils - Java小功能程序
+ * StringUtils - Java小功能程序
  * 生成时间: 2025-07-03
  * 功能描述: 实现一个Java的小功能的程序
  */
-public class SearchUtils {
+public class StringUtils {
 
     private static final Random random = new Random();
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static void main(String[] args) {
-        System.out.println("=== SearchUtils 功能演示 ===");
+        System.out.println("=== StringUtils 功能演示 ===");
 
         // 演示各种小功能
         demonstrateStringOperations();
