@@ -2,5 +2,7 @@ class Solution {
     public int[] topKFrequent(int[] nums, int k) {
          PriorityQueue<ListNode> pq = new PriorityQueue<>((a,b)->a-b);
     }
-    main
+    public static void main(String[] args) {
+        
+    }
 }
