@@ -48,6 +48,10 @@ public class OneClickCommit {
         "NetworkClient.java", "Scheduler.java", "Monitor.java", "ApiGateway.java", "SecurityFilter.java"
     };
     
+
+
+
+
     public static void main(String[] args) {
         System.out.println("=== 一键启动程序 ===");
         System.out.println("自动生成Java小功能程序并提交到GitHub");
