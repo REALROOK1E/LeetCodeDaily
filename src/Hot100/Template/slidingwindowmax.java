@@ -1,6 +1,8 @@
 package Hot100.Template;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 /**
  * @author: ZeKai
@@ -17,9 +19,73 @@ public class slidingwindowmax {
 
     public static void main(String[] args) {
         int[] arr=new int[]{-7,-8,7,5,7,1,6,0};//5个答案对应的优先队列：75,7,71,76,760
+        System.out.println("测试数组: " + Arrays.toString(arr) + ", k=3");
+        System.out.println("期望结果: [7,7,7,7,6,6]");
+        
+        System.out.println("\n=== TreeMap方法 ===");
+        maxSlidingWindowTreeMap(arr, 3);
+        
+        System.out.println("\n=== 单调队列方法 ===");
         maxSlidingWindow2(arr, 3);
+        
+        System.out.println("\n=== 标准单调队列方法 ===");
+        maxSlidingWindow(arr, 3);
     }
     public static int[] q=new int[1000001];
+
+    // TreeMap方法 - 最直观的实现
+    public static int[] maxSlidingWindowTreeMap(int[] nums, int k) {
+        // TreeMap: key是值，value是该值出现的次数
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        int[] result = new int[nums.length - k + 1];
+        
+        for (int i = 0; i < nums.length; i++) {
+            // 添加当前元素
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+            
+            // 当窗口大小达到k时，开始记录答案
+            if (i >= k - 1) {
+                // 当前窗口的最大值就是TreeMap的最后一个key
+                result[i - k + 1] = map.lastKey();
+                
+                // 移除窗口最左边的元素
+                int leftNum = nums[i - k + 1];
+                map.put(leftNum, map.get(leftNum) - 1);
+                if (map.get(leftNum) == 0) {
+                    map.remove(leftNum);
+                }
+            }
+        }
+        
+        System.out.println("TreeMap方法结果: " + Arrays.toString(result));
+        return result;
+    }
+
+    public int[] maxSlidingWindow1(int[] nums, int k) {
+        PriorityQueue<Integer> q=new PriorityQueue<>((a,b)->{
+            return a-b;
+        });
+          for (int n : nums) {
+            
+                q.add(n);
+            if(q.size()>k){
+                
+            }
+
+
+          }
+        return null;
+    
+        }
+
+
+
+
+
+
+
+
+
     public static int[] maxSlidingWindow2(int[] nums, int k) {
         //要四个变量
         int[] ans=new int[nums.length-k+1];

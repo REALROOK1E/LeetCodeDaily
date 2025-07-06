@@ -39,7 +39,8 @@ public class buildtreewithpreandin {
         这个长度是通用的
          */
         //左子树有k个 右子树有length-k-1个
-        if(l2==r2) return root;//相等的情况下就是一个单独的点了，否则继续构建  通过k表示新的边界
+        if(l2==r2) return root;
+        //相等的情况下就是一个单独的点了，否则继续构建  通过k表示新的边界
         //后序+子树的长度
         int leftSize = k-l1;
         int rightSize = r1-k;
@@ -49,11 +50,47 @@ public class buildtreewithpreandin {
         return root;
     }
 
+
+
+
+
+
+    public static TreeNode buildTree2(int[] preorder, int[] inorder) {
+        int n =preorder.length;
+        int prel=0;
+        int prer=n-1;
+        int inl=0;
+        int inr=n-1;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<n;i++){
+            map.put(inorder[i],i);
+        }
+        
+             return f1(preorder,inorder,prel,prer,inl,inr,map);
+
+    }
+
+
+        public static TreeNode f1(int[] preorder, int[] inorder,int prel,int prer,int inl,int inr,HashMap<Integer,Integer> map){
+
+            if(prel>prer||inl>inr) return null;
+            TreeNode head=new TreeNode(preorder[prel]);
+            int mid=map.get(head.val);
+            if(inl==inr) return head;
+            //in： inl-mid-inr   0-4-7  0123 4 567
+            //pre：头+左+右=prel+(mid-1-inl)+(inr-mid-1) 0 1234 567
+            int leftSize = mid - inl;
+            head.left=f1( preorder, inorder,prel+1,prel+leftSize,inl,mid-1,map);
+            head.right=f1(preorder, inorder,prel+leftSize+1,prer,mid+1,inr,map);
+            return head;
+        }
+
     public static void main(String[] args) {
        int[] inorder = {9,3,15,20,7};
        int[] postorder = {9,15,7,20,3}; //3,9,20,15,7
-       TreeNode t=buildTree(inorder,postorder);
-        assert t != null;
-        System.out.println(t.toPreorderString());
+       int[] preorder={3,9,20,15,7};
+
+       TreeNode t=buildTree2(inorder,preorder);
+        System.out.println(t.toString());
     }
 }

@@ -10,26 +10,33 @@ import java.util.PriorityQueue;
  **/
 public class Merge {
     public static ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue <ListNode> q=new PriorityQueue<>((a,b)->{ return a.val-b.val;});
 
-        PriorityQueue<ListNode> pq = new PriorityQueue<>((a,b)->a.val-b.val);
-        if(lists.length == 0) return null;
-        for(ListNode l : lists) {
-            if(l != null) {
-                pq.add(l);
-            }
+        if(lists.length==0) return null;
+        for (ListNode node : lists) {
+            if(node!=null)
+             q.add(node);
+  }     
+
+        ListNode head=new ListNode();
+        ListNode cur=head;
+        while(!q.isEmpty()){
+            ListNode newhead=q.peek().next;
+            cur.next=q.poll();
+            cur=cur.next;
+            if(newhead!=null)
+                q.add(newhead);
         }
-        if(pq.isEmpty()) return null;
-        ListNode head = new ListNode(0);
-        ListNode cur = head;//虚拟头结点，相当于用cur让它工作
-        while(!pq.isEmpty()) {
-            ListNode p= pq.poll();
-            cur.next = p;
-            if(p.next != null) {
-                pq.add(p.next);
-            }
-            cur = cur.next;
-        }
-        return head.next;
+      
+        System.out.println(head.toString());
+
+return head.next;
+
+
+
+
+
+                  
     }
 
     public static void main(String[] args) {
@@ -38,8 +45,11 @@ public class Merge {
         head1.next.next=new ListNode(5);
         head1.next.next.next=new ListNode(7);
         head1.next.next.next.next=new ListNode(8);
+
+
         ListNode head2 =new ListNode(2);
         head2.next=new ListNode(4);
-        mergeKLists(new ListNode[]{});
+        head2.next.next=new ListNode(6);
+        mergeKLists(new ListNode[]{null,head1});
     }
 }
