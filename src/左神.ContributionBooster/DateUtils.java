@@ -1,68 +1,70 @@
-package ï¿½ï¿½ï¿½ï¿½.ContributionBooster;
+package ×óÉñ.ContributionBooster;
 
 import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * StringUtils - JavaÐ¡ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½: 2025-07-03
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Êµï¿½ï¿½Ò»ï¿½ï¿½Javaï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ÜµÄ³ï¿½ï¿½ï¿½
+ * Calculator - JavaÐ¡¹¦ÄÜ³ÌÐò
+ * Éú³ÉÊ±¼ä: 2025-07-06
+ * ¹¦ÄÜÃèÊö: ÊµÏÖÒ»¸öJavaµÄÐ¡¹¦ÄÜµÄ³ÌÐò
  */
-public class StringUtils {
+public class Calculator {
 
     private static final Random random = new Random();
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static void main(String[] args) {
-        System.out.println("=== StringUtils ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ ===");
+        System.out.println("=== Calculator ¹¦ÄÜÑÝÊ¾ ===");
 
+        // ÑÝÊ¾¸÷ÖÖÐ¡¹¦ÄÜ
         demonstrateStringOperations();
         demonstrateArrayOperations();
         demonstrateMathOperations();
         demonstrateDateOperations();
         demonstrateFileOperations();
-        System.out.println("=== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ ===");
+
+        System.out.println("=== ¹¦ÄÜÑÝÊ¾Íê³É ===");
     }
 
     /**
-     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+     * ×Ö·û´®²Ù×÷ÑÝÊ¾
      */
     private static void demonstrateStringOperations() {
-        System.out.println("\n1. ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾:");
+        System.out.println("\n1. ×Ö·û´®²Ù×÷ÑÝÊ¾:");
 
         String text = "Hello World Java Programming";
-        System.out.println("Ô­Ê¼ï¿½Ö·ï¿½ï¿½ï¿½: " + text);
-        System.out.println("×ªï¿½ï¿½Ð´: " + text.toUpperCase());
+        System.out.println("Ô­Ê¼×Ö·û´®: " + text);
+        System.out.println("×ª´óÐ´: " + text.toUpperCase());
         System.out.println("×ªÐ¡Ð´: " + text.toLowerCase());
-        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + text.split(" ").length);
-        System.out.println("ï¿½ï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½: " + new StringBuilder(text).reverse());
+        System.out.println("µ¥´ÊÊýÁ¿: " + text.split(" ").length);
+        System.out.println("·´×ª×Ö·û´®: " + new StringBuilder(text).reverse());
     }
 
     /**
-     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+     * Êý×é²Ù×÷ÑÝÊ¾
      */
     private static void demonstrateArrayOperations() {
-        System.out.println("\n2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾:");
+        System.out.println("\n2. Êý×é²Ù×÷ÑÝÊ¾:");
 
         int[] numbers = new int[10];
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = random.nextInt(100);
         }
 
-        System.out.println("Ô­Ê¼ï¿½ï¿½ï¿½ï¿½: " + Arrays.toString(numbers));
+        System.out.println("Ô­Ê¼Êý×é: " + Arrays.toString(numbers));
         Arrays.sort(numbers);
-        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½: " + Arrays.toString(numbers));
-        System.out.println("ï¿½ï¿½ï¿½Öµ: " + numbers[numbers.length - 1]);
-        System.out.println("ï¿½ï¿½Ð¡Öµ: " + numbers[0]);
-        System.out.println("Æ½ï¿½ï¿½Öµ: " + Arrays.stream(numbers).average().orElse(0));
+        System.out.println("ÅÅÐòºó: " + Arrays.toString(numbers));
+        System.out.println("×î´óÖµ: " + numbers[numbers.length - 1]);
+        System.out.println("×îÐ¡Öµ: " + numbers[0]);
+        System.out.println("Æ½¾ùÖµ: " + Arrays.stream(numbers).average().orElse(0));
     }
 
     /**
-     * ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+     * ÊýÑ§ÔËËãÑÝÊ¾
      */
     private static void demonstrateMathOperations() {
-        System.out.println("\n3. ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾:");
+        System.out.println("\n3. ÊýÑ§ÔËËãÑÝÊ¾:");
 
         double a = random.nextDouble() * 100;
         double b = random.nextDouble() * 100;
@@ -73,65 +75,65 @@ public class StringUtils {
         System.out.println("a - b = " + String.format("%.2f", a - b));
         System.out.println("a * b = " + String.format("%.2f", a * b));
         System.out.println("a / b = " + String.format("%.2f", a / b));
-        System.out.println("aï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ = " + String.format("%.2f", Math.sqrt(a)));
-        System.out.println("aï¿½ï¿½ï¿½Ý´ï¿½ = " + String.format("%.2f", Math.pow(a, 2)));
+        System.out.println("aµÄÆ½·½¸ù = " + String.format("%.2f", Math.sqrt(a)));
+        System.out.println("aµÄÃÝ´Î = " + String.format("%.2f", Math.pow(a, 2)));
     }
 
     /**
-     * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+     * ÈÕÆÚÊ±¼ä²Ù×÷ÑÝÊ¾
      */
     private static void demonstrateDateOperations() {
-        System.out.println("\n4. ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾:");
+        System.out.println("\n4. ÈÕÆÚÊ±¼ä²Ù×÷ÑÝÊ¾:");
 
         LocalDateTime now = LocalDateTime.now();
-        System.out.println("ï¿½ï¿½Ç°Ê±ï¿½ï¿½: " + now.format(formatter));
-        System.out.println("ï¿½ï¿½ï¿½: " + now.getYear());
-        System.out.println("ï¿½Â·ï¿½: " + now.getMonth());
-        System.out.println("ï¿½ï¿½ï¿½ï¿½: " + now.getDayOfMonth());
+        System.out.println("µ±Ç°Ê±¼ä: " + now.format(formatter));
+        System.out.println("Äê·Ý: " + now.getYear());
+        System.out.println("ÔÂ·Ý: " + now.getMonth());
+        System.out.println("ÈÕÆÚ: " + now.getDayOfMonth());
         System.out.println("Ð¡Ê±: " + now.getHour());
-        System.out.println("ï¿½ï¿½ï¿½ï¿½: " + now.getMinute());
+        System.out.println("·ÖÖÓ: " + now.getMinute());
 
         LocalDateTime future = now.plusDays(7);
-        System.out.println("Ò»ï¿½Üºï¿½: " + future.format(formatter));
+        System.out.println("Ò»ÖÜºó: " + future.format(formatter));
     }
 
     /**
-     * ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+     * ÎÄ¼þ²Ù×÷ÑÝÊ¾
      */
     private static void demonstrateFileOperations() {
-        System.out.println("\n5. ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾:");
+        System.out.println("\n5. ÎÄ¼þ²Ù×÷ÑÝÊ¾:");
 
         String fileName = "demo_" + System.currentTimeMillis() + ".txt";
         try {
-            // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+            // ´´½¨ÎÄ¼þ
             FileWriter writer = new FileWriter(fileName);
-            writer.write("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä¼ï¿½\n");
-            writer.write("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½: " + LocalDateTime.now().format(formatter) + "\n");
-            writer.write("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + random.nextInt(1000) + "\n");
+            writer.write("ÕâÊÇÒ»¸öÑÝÊ¾ÎÄ¼þ\n");
+            writer.write("Éú³ÉÊ±¼ä: " + LocalDateTime.now().format(formatter) + "\n");
+            writer.write("Ëæ»úÊý¾Ý: " + random.nextInt(1000) + "\n");
             writer.close();
 
-            System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½: " + fileName);
+            System.out.println("´´½¨ÎÄ¼þ: " + fileName);
 
-            // ï¿½ï¿½È¡ï¿½Ä¼ï¿½
+            // ¶ÁÈ¡ÎÄ¼þ
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
-            System.out.println("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½:");
+            System.out.println("ÎÄ¼þÄÚÈÝ:");
             while ((line = reader.readLine()) != null) {
                 System.out.println("  " + line);
             }
             reader.close();
 
-            // É¾ï¿½ï¿½ï¿½Ä¼ï¿½
+            // É¾³ýÎÄ¼þ
             new File(fileName).delete();
-            System.out.println("É¾ï¿½ï¿½ï¿½Ä¼ï¿½: " + fileName);
+            System.out.println("É¾³ýÎÄ¼þ: " + fileName);
 
         } catch (IOException e) {
-            System.err.println("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½: " + e.getMessage());
+            System.err.println("ÎÄ¼þ²Ù×÷Ê§°Ü: " + e.getMessage());
         }
     }
 
     /**
-     * ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * ¹¤¾ß·½·¨£ºÉú³ÉËæ»ú×Ö·û´®
      */
     public static String generateRandomString(int length) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -143,7 +145,7 @@ public class StringUtils {
     }
 
     /**
-     * ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½
+     * ¹¤¾ß·½·¨£º¼ì²éÊÇ·ñÎªÖÊÊý
      */
     public static boolean isPrime(int number) {
         if (number <= 1) return false;
