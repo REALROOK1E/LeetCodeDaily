@@ -56,7 +56,7 @@ public class OneClickCommit {
         System.out.println("=== 一键启动程序 ===");
         System.out.println("自动生成Java小功能程序并提交到GitHub");
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             try {
                 // 1. 生成Java小功能程序
                 String generatedCode = generateJavaFunction();
