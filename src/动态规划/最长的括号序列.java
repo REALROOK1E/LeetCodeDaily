@@ -25,26 +25,24 @@ package 动态规划;
  */
 public class 最长的括号序列 {
         public static int longestValidParentheses(String s) {
-       char[] c=s.toCharArray();
-        int [] dp= new int[s.length()];
-        int ans=0;
-        for (int i = 1; i < s.length(); i++) {
-            
-            if(c[i]==')'){
-               int p = i-dp[i-1]-1;
-                if( p>=0&&c[p]=='('){
-                  dp[i]=dp[i-1]+2+(p-1>0?dp[p-1]:0);
+   //构造一个序列，右括号才可以，左括号就是0，然后遇到右括号往左边探路
+            char[] c=s.toCharArray();
+            int [] dp= new int [s.length()];
+            for(int i=1;i<c.length;i++){
+                if(c[i]==')'){
+                 int match=i-dp[i-1]-1;
+                if(match>=0&&c[match]=='(')
+                {
+                    dp[i]=2+dp[i-1]+(match>0?dp[match-1]:0);
+                }   
+                }
             }
+            int ans=0;  // 修复：初始化为0而不是-1
+            for(int i=0;i<c.length;i++){
+                ans=Math.max(ans,dp[i]);
             }
-        }
-    
-         for(int i:dp){
-            if(i>ans)
-            ans=i;
-         }
+            return ans;
 
-
-        return ans;
     }
 public static void main(String[] args) {
     System.out.println(longestValidParentheses("()(())"));
