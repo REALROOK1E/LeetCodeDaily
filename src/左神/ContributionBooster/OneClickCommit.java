@@ -12,6 +12,15 @@ import java.util.Random;
 public class OneClickCommit {
     
     private static final Random random = new Random();
+    private static final String[] ENGLISH_COMMENTS = {
+        "Refactor code for better readability", "Add more test cases", "Update documentation", "Improve performance", "Fix typo",
+        "Remove unused import", "Optimize algorithm", "Add TODO", "Minor bug fix", "Enhance security",
+        "Add logging", "Update dependency version", "Refine error handling", "Polish UI", "Add feature flag"
+    };
+    private static final String[] RANDOM_SNIPPETS = {
+        "// TODO: optimize this loop\n", "// FIXME: potential NPE here\n", "// NOTE: legacy code below\n", "// HACK: quick workaround\n",
+        "// REVIEW: needs more tests\n", "// DEBUG: print variable\n", "// PERF: cache result\n"
+    };
     private static final String[] FUNCTION_NAMES = {
         "Calculator", "StringUtils", "ArrayHelper", "DateUtils", "FileProcessor",
         "MathHelper", "ValidationUtils", "SortHelper", "SearchUtils", "DataConverter"
@@ -56,34 +65,118 @@ public class OneClickCommit {
         System.out.println("=== 一键启动程序 ===");
         System.out.println("自动生成Java小功能程序并提交到GitHub");
         
-        for (int i = 0; i < 6; i++) {
+        int commitCount = 6 + random.nextInt(5); // 6~10次
+        for (int i = 0; i < commitCount; i++) {
             try {
-                // 1. 生成Java小功能程序
-                String generatedCode = generateJavaFunction();
-                
-                // 2. 创建文件
-                String fileName = createJavaFile(generatedCode);
-                
-                // 3. 更新现有文件
+                // 随机决定本次操作类型
+                int opType = random.nextInt(100);
+                String fileName = null;
+                if (opType < 60) {
+                    // 1. 生成Java小功能程序
+                    String generatedCode = generateJavaFunction();
+                    fileName = createJavaFile(generatedCode);
+                } else if (opType < 80) {
+                    // 2. 随机更新README或配置文件
+                    fileName = updateRandomTextFile();
+                } else {
+                    // 3. 偶尔删除或合并文件
+                    fileName = randomFileOperation();
+                }
+                // 4. 更新现有文件
                 updateExistingFiles();
-                
-                // 4. 生成提交信息
-                String commitMessage = generateCommitMessage();
-                
-                // 5. 执行Git操作
+                // 5. 生成更丰富的提交信息
+                String commitMessage = generateRichCommitMessage(fileName);
+                // 6. 执行Git操作
                 executeGitOperations(commitMessage);
-                
-                System.out.println("=== 操作完成 ===");
-                System.out.println("生成的文件: " + fileName);
+                // 7. 日志输出
+                if (random.nextInt(10) == 0) {
+                    System.out.println("[提示] 手滑写错了又改回来，已修正");
+                } else if (random.nextInt(15) == 0) {
+                    System.out.println("[编译] 编译失败，重试成功");
+                } else {
+                    System.out.println("=== 操作完成 ===");
+                }
+                System.out.println("生成/操作的文件: " + fileName);
                 System.out.println("提交信息: " + commitMessage);
                 System.out.println("已自动提交到GitHub");
-                
+                // 8. 随机等待 1~5 秒，模拟真实开发节奏
+                Thread.sleep(1000 + random.nextInt(4000));
             } catch (Exception e) {
                 System.err.println("操作失败: " + e.getMessage());
-                e.printStackTrace();
+                if (random.nextBoolean()) {
+                    System.out.println("[提示] 可能是网络波动，稍后自动重试");
+                }
             }
         }
       
+    }
+
+    // 生成更丰富的commit message
+    private static String generateRichCommitMessage(String fileName) {
+        String type = TYPES[random.nextInt(TYPES.length)];
+        String scope = SCOPES[random.nextInt(SCOPES.length)];
+        String emoji = EMOJIS[random.nextInt(EMOJIS.length)];
+        String detail = DETAILS[random.nextInt(DETAILS.length)];
+        String mood = MOODS[random.nextInt(MOODS.length)];
+        String functionName = FUNCTION_NAMES[random.nextInt(FUNCTION_NAMES.length)];
+        String developer = DEVELOPERS[random.nextInt(DEVELOPERS.length)];
+        String file = (fileName != null) ? fileName : FILES[random.nextInt(FILES.length)];
+        String timestamp = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        int ticket = 100 + random.nextInt(900);
+        String english = "";
+        if (random.nextInt(4) == 0) {
+            english = ENGLISH_COMMENTS[random.nextInt(ENGLISH_COMMENTS.length)] + " | ";
+        }
+        String snippet = "";
+        if (random.nextInt(5) == 0) {
+            snippet = RANDOM_SNIPPETS[random.nextInt(RANDOM_SNIPPETS.length)].replace("\n", " ");
+        }
+        return String.format(
+            "%s(%s): %s - %s [%s] %s #%d | by %s | 文件: %s | %s %s | %s%s%s",
+            type, scope, detail, functionName, timestamp, emoji, ticket, developer, file, time, mood, english, snippet, "自动生成提交信息"
+        );
+    }
+
+    // 随机更新README或配置文件
+    private static String updateRandomTextFile() throws IOException {
+        String[] files = {"README.md", "README_OneClick.md", "src/左神.ContributionBooster/ConfigManager.java"};
+        String file = files[random.nextInt(files.length)];
+        String content = "\n# 更新日志 " + LocalDate.now() + "\n";
+        if (random.nextBoolean()) {
+            content += ENGLISH_COMMENTS[random.nextInt(ENGLISH_COMMENTS.length)] + "\n";
+        }
+        if (random.nextBoolean()) {
+            content += RANDOM_SNIPPETS[random.nextInt(RANDOM_SNIPPETS.length)];
+        }
+        try (FileWriter writer = new FileWriter(file, true)) {
+            writer.write(content);
+        }
+        System.out.println("  更新文本文件: " + file);
+        return file;
+    }
+
+    // 偶尔删除或合并文件
+    private static String randomFileOperation() throws IOException {
+        String[] files = {"src/左神.ContributionBooster/Logger.java", "src/左神.ContributionBooster/CacheService.java"};
+        String file = files[random.nextInt(files.length)];
+        if (random.nextBoolean()) {
+            // 删除文件
+            File f = new File(file);
+            if (f.exists()) {
+                f.delete();
+                System.out.println("  删除文件: " + file);
+            }
+            return file;
+        } else {
+            // 合并内容
+            String mergeContent = "// 合并内容: " + LocalDate.now() + "\n";
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(mergeContent);
+            }
+            System.out.println("  合并内容到文件: " + file);
+            return file;
+        }
     }
     
     /**
@@ -291,6 +384,13 @@ public class OneClickCommit {
         };
         
         String updateComment = "// 自动更新: " + LocalDate.now() + " - 版本 " + random.nextInt(100);
+        // 偶尔插入英文注释或代码片段
+        if (random.nextInt(3) == 0) {
+            updateComment += "\n" + ENGLISH_COMMENTS[random.nextInt(ENGLISH_COMMENTS.length)];
+        }
+        if (random.nextInt(4) == 0) {
+            updateComment += "\n" + RANDOM_SNIPPETS[random.nextInt(RANDOM_SNIPPETS.length)];
+        }
         
         for (String filePath : filesToUpdate) {
             File file = new File(filePath);
@@ -303,27 +403,6 @@ public class OneClickCommit {
         }
     }
     
-    /**
-     * 生成提交信息
-     */
-    private static String generateCommitMessage() {
-        String type = TYPES[random.nextInt(TYPES.length)];
-        String scope = SCOPES[random.nextInt(SCOPES.length)];
-        String emoji = EMOJIS[random.nextInt(EMOJIS.length)];
-        String detail = DETAILS[random.nextInt(DETAILS.length)];
-        String mood = MOODS[random.nextInt(MOODS.length)];
-        String functionName = FUNCTION_NAMES[random.nextInt(FUNCTION_NAMES.length)];
-        String developer = DEVELOPERS[random.nextInt(DEVELOPERS.length)];
-        String file = FILES[random.nextInt(FILES.length)];
-        String timestamp = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String time = java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        int ticket = 100 + random.nextInt(900);
-
-        return String.format(
-            "%s(%s): %s - %s [%s] %s #%d | by %s | 文件: %s | %s %s | %s",
-            type, scope, detail, functionName, timestamp, emoji, ticket, developer, file, time, mood, "自动生成提交信息"
-        );
-    }
     
     /**
      * 执行Git操作
@@ -400,7 +479,7 @@ public class OneClickCommit {
                 updateExistingFiles();
                 
                 // 生成提交信息
-                String commitMessage = generateCommitMessage();
+                String commitMessage = generateRichCommitMessage(fileName);
                 
                 // 执行Git操作
                 executeGitOperations(commitMessage);
