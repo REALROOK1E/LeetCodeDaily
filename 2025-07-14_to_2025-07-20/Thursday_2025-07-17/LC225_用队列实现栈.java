@@ -1,0 +1,145 @@
+import java.util.*;
+
+/**
+ * LeetCode 225 - 用队列实现栈
+ * 
+ * 题目描述：
+ * 请你仅使用两个队列实现一个后入先出（LIFO）的栈，并支持普通栈的全部四种操作（push、top、pop 和 empty）。
+ * 
+ * 实现 MyStack 类：
+ * - void push(int x) 将元素 x 压入栈顶。
+ * - int pop() 移除并返回栈顶元素。
+ * - int top() 返回栈顶元素。
+ * - boolean empty() 如果栈是空的，返回 true ；否则，返回 false 。
+ * 
+ * 注意：
+ * 你只能使用队列的基本操作 —— 也就是 push to back、peek/pop from front、size 和 is empty 这些操作。
+ * 你所使用的语言也许不支持队列。 你可以使用 list （列表）或者 deque（双端队列）来模拟一个队列 , 只要是标准的队列操作即可。
+ * 
+ * 示例：
+ * 输入：
+ * ["MyStack", "push", "push", "top", "pop", "empty"]
+ * [[], [1], [2], [], [], []]
+ * 输出：
+ * [null, null, null, 2, 2, false]
+ * 
+ * 解释：
+ * MyStack myStack = new MyStack();
+ * myStack.push(1);
+ * myStack.push(2);
+ * myStack.top(); // 返回 2
+ * myStack.pop(); // 返回 2
+ * myStack.empty(); // 返回 False
+ * 
+ * 提示：
+ * 1 <= x <= 9
+ * 最多调用100 次 push、pop、top 和 empty
+ * 每次调用 pop 和 top 都保证栈不为空
+ * 
+ * 进阶：你能否仅用一个队列来实现栈。
+ */
+public class LC225_用队列实现栈 {
+    
+    /**
+     * 方法1：双队列法
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     */
+    class MyStack {
+        // TODO: 实现你的解法
+        
+        public MyStack() {
+            // TODO: 初始化
+        }
+        
+        public void push(int x) {
+            // TODO: 实现push方法
+        }
+        
+        public int pop() {
+            // TODO: 实现pop方法
+            return 0;
+        }
+        
+        public int top() {
+            // TODO: 实现top方法
+            return 0;
+        }
+        
+        public boolean empty() {
+            // TODO: 实现empty方法
+            return false;
+        }
+    }
+    
+    /**
+     * 方法2：单队列法
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     */
+    class MyStack2 {
+        // TODO: 实现你的解法
+        
+        public MyStack2() {
+            // TODO: 初始化
+        }
+        
+        public void push(int x) {
+            // TODO: 实现push方法
+        }
+        
+        public int pop() {
+            // TODO: 实现pop方法
+            return 0;
+        }
+        
+        public int top() {
+            // TODO: 实现top方法
+            return 0;
+        }
+        
+        public boolean empty() {
+            // TODO: 实现empty方法
+            return false;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== 测试方法1 ===");
+        LC225_用队列实现栈 solution = new LC225_用队列实现栈();
+        MyStack myStack = solution.new MyStack();
+        
+        // 测试用例
+        myStack.push(1);
+        System.out.println("push(1)");
+        
+        myStack.push(2);
+        System.out.println("push(2)");
+        
+        int top1 = myStack.top();
+        System.out.println("top() = " + top1 + " (期望: 2)");
+        
+        int pop1 = myStack.pop();
+        System.out.println("pop() = " + pop1 + " (期望: 2)");
+        
+        boolean empty1 = myStack.empty();
+        System.out.println("empty() = " + empty1 + " (期望: false)");
+        
+        int pop2 = myStack.pop();
+        System.out.println("pop() = " + pop2 + " (期望: 1)");
+        
+        boolean empty2 = myStack.empty();
+        System.out.println("empty() = " + empty2 + " (期望: true)");
+        
+        System.out.println("\\n=== 测试方法2 ===");
+        MyStack2 myStack2 = solution.new MyStack2();
+        
+        myStack2.push(1);
+        myStack2.push(2);
+        myStack2.push(3);
+        
+        System.out.println("top() = " + myStack2.top());
+        System.out.println("pop() = " + myStack2.pop());
+        System.out.println("top() = " + myStack2.top());
+    }
+} 
