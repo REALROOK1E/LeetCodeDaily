@@ -48,18 +48,100 @@ public class LC146_LRU缓存 {
      */
     class LRUCache {
         // TODO: 实现你的解法
-        
+        class DoubleNode{
+            int key;
+            int val;
+            DoubleNode prev;
+            DoubleNode next;
+            DoubleNode(int k,int v){
+                key=k;
+                val=v;
+
+            }
+        }
+        class DoubleList{
+
+          DoubleNode head;
+          DoubleNode tail;
+      
+          public void addNode(DoubleNode node){
+            if(node==null) return;
+            if(head==null){
+                head=node;
+                tail=node;
+            }else{
+                tail.next=node;
+                node.prev=tail;
+                tail=node;
+            }
+          }
+          //尾部是最后访问的，也是最先加进去的
+          //应该更新到尾部
+          public void fixTime(DoubleNode node){
+            //释放，插入尾部
+            if (tail == node) return;//忘了
+            if(node==head){
+                head=node.next;
+                if (head != null) {
+                    head.prev = null;
+                }
+            }else{
+                node.prev.next=node.next;
+                node.next.prev=node.prev;
+            }
+            tail.next=node;
+            node.prev=tail;
+            node.next=null;
+            tail=node;
+          }
+          public DoubleNode removeHead(){
+            DoubleNode node=head; 
+            if(head==tail){
+                head=null;
+                tail=null;}
+            else{
+                head=node.next;
+                head.prev=null;
+                node.next=null;
+            }
+return node;
+          }
+
+        }
+
+     private  HashMap<Integer,DoubleNode> map;
+private DoubleList list;
+private final int cap;
+
+
         public LRUCache(int capacity) {
-            // TODO: 初始化
+            map = new HashMap<>();
+            list = new DoubleList();
+            cap = capacity;
         }
         
         public int get(int key) {
-            // TODO: 实现get方法
+            if(map.containsKey(key)){
+             DoubleNode ans=map.get(key);
+                list.fixTime(ans);
+                return ans.val;
+            }   
             return -1;
         }
         
         public void put(int key, int value) {
-            // TODO: 实现put方法
+            if(map.containsKey(key)){
+                DoubleNode ans=map.get(key);
+                ans.val=value;
+                list.fixTime(ans);
+            }else{
+                DoubleNode node=new DoubleNode(key,value);
+                if(map.size()==cap){
+                    map.remove(list.removeHead().key);
+                } 
+                list.addNode(node);
+ map.put(key, node);
+            }
         }
     }
     
@@ -68,23 +150,7 @@ public class LC146_LRU缓存 {
      * 时间复杂度：O(1)
      * 空间复杂度：O(capacity)
      */
-    class LRUCache2 {
-        // TODO: 实现你的解法
-        
-        public LRUCache2(int capacity) {
-            // TODO: 初始化
-        }
-        
-        public int get(int key) {
-            // TODO: 实现get方法
-            return -1;
-        }
-        
-        public void put(int key, int value) {
-            // TODO: 实现put方法
-        }
-    }
-    
+
     public static void main(String[] args) {
         System.out.println("=== 测试方法1 ===");
         LC146_LRU缓存 solution = new LC146_LRU缓存();

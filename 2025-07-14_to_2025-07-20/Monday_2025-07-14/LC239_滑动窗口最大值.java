@@ -20,43 +20,18 @@ import java.util.*;
  *  1  3  -1 [-3  5  3] 6  7       5
  *  1  3  -1  -3 [5  3  6] 7       6
  *  1  3  -1  -3  5 [3  6  7]      7
- * 
- * 提示：
- * 1 <= nums.length <= 10^5
- * -10^4 <= nums[i] <= 10^4
- * 1 <= k <= nums.length
+
  */
 public class LC239_滑动窗口最大值 {
-    
+
     /**
      * 方法1：单调队列（推荐）
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(k)
      */
     public int[] maxSlidingWindow(int[] nums, int k) {
-        // TODO: 实现你的解法
+      
         return new int[0];
     }
     
-    /**
-     * 方法2：TreeMap
-     * 时间复杂度：O(n log k)
-     * 空间复杂度：O(k)
-     */
-    public int[] maxSlidingWindow2(int[] nums, int k) {
-        // TODO: 实现你的解法
-        return new int[0];
-    }
-    
-    /**
-     * 方法3：优先队列（堆）
-     * 时间复杂度：O(n log k)
-     * 空间复杂度：O(k)
-     */
-    public int[] maxSlidingWindow3(int[] nums, int k) {
-        // TODO: 实现你的解法
-        return new int[0];
-    }
     
     public static void main(String[] args) {
         LC239_滑动窗口最大值 solution = new LC239_滑动窗口最大值();
