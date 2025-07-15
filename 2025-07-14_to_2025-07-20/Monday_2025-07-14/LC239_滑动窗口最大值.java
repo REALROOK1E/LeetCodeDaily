@@ -28,7 +28,7 @@ public class LC239_滑动窗口最大值 {
      * 方法1：单调队列（推荐）
      */
     public int[] maxSlidingWindow(int[] nums, int k) {
-      
+        
         return new int[0];
     }
     
