@@ -25,19 +25,51 @@ public class LC215_数组中的第K个最大元素 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public int findKthLargest(int[] nums, int k) {
-        // TODO: 实现你的解法
+    public static int findKthLargest(int[] nums, int k) {
+        int n=nums.length;
+        int l=0;
+        int r=n-1;
+        while(l<r){
+            int p=partition(nums,l,r);
+            if(p==k) return nums[k];
+            if(p>k) r=p-1;
+            else l=p+1;
+        }
         return 0;
     }
     
+    private static int partition(int[] nums,int left,int right) {
+        int p=nums[right];
+        int i=0;
+    for (int j=0; j < nums.length; j++) {
+        if(nums[j]<p){
+            swap(nums,i,j);
+            i++;
+        }
+    }
+      swap(nums,i,p);
+    
+    return p;
+    }
+
+    private static void swap(int[] nums, int i, int j) {
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+
     /**
      * 方法2：堆排序
      * 时间复杂度：O(n log k)
      * 空间复杂度：O(k)
      */
-    public int findKthLargest2(int[] nums, int k) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int findKthLargest2(int[] nums, int k) {
+        PriorityQueue <Integer> pq=new PriorityQueue<>();
+       for (int nums2 : nums) {
+        if(pq.size()==k) pq.poll();
+        pq.offer(nums2);
+       }
+        return pq.peek();
     }
     
     /**
@@ -51,25 +83,6 @@ public class LC215_数组中的第K个最大元素 {
     }
     
     public static void main(String[] args) {
-        LC215_数组中的第K个最大元素 solution = new LC215_数组中的第K个最大元素();
-        
-        // 测试用例
-        int[][] testCases = {
-            {3, 2, 1, 5, 6, 4}, 2,           // 期望输出: 5
-            {3, 2, 3, 1, 2, 4, 5, 5, 6}, 4,  // 期望输出: 4
-            {1}, 1,                           // 期望输出: 1
-            {1, 2, 3, 4, 5}, 2,              // 期望输出: 4
-            {5, 4, 3, 2, 1}, 3               // 期望输出: 3
-        };
-        
-        for (int i = 0; i < testCases.length; i += 2) {
-            int[] nums = testCases[i];
-            int k = testCases[i + 1];
-            int result = solution.findKthLargest(nums, k);
-            System.out.println("测试用例 " + (i/2 + 1) + ":");
-            System.out.println("输入: nums = " + Arrays.toString(nums) + ", k = " + k);
-            System.out.println("输出: " + result);
-            System.out.println("---");
-        }
+       System.out.println( findKthLargest(new int[] {3,2,3,1,2,4,5,5,6}, 4));
     }
 } 

@@ -26,9 +26,12 @@ public class LC136_只出现一次的数字 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public int singleNumber(int[] nums) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int singleNumber(int[] nums) {
+      int num=0;
+        for (int i : nums) {
+        num^=i;
+      }
+        return num;
     }
     
     /**
@@ -52,7 +55,6 @@ public class LC136_只出现一次的数字 {
     }
     
     public static void main(String[] args) {
-        LC136_只出现一次的数字 solution = new LC136_只出现一次的数字();
         
         // 测试用例
         int[][] testCases = {
@@ -66,7 +68,7 @@ public class LC136_只出现一次的数字 {
         
         for (int i = 0; i < testCases.length; i++) {
             int[] nums = testCases[i];
-            int result = solution.singleNumber(nums);
+            int result = singleNumber(nums);
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + java.util.Arrays.toString(nums));
             System.out.println("输出: " + result);

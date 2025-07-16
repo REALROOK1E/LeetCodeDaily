@@ -30,7 +30,10 @@ public class LC4_寻找两个正序数组的中位数 {
      * 空间复杂度：O(1)
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        // TODO: 实现你的解法
+        int l1=0;
+        int r1=nums1.length-1;
+        int l2=0;
+        int r2=nums2.length-1;
         return 0.0;
     }
     

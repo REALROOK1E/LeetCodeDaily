@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.swing.event.InternalFrameAdapter;
+
 /**
  * LeetCode 347 - 前K个高频元素
  * 
@@ -28,8 +30,25 @@ public class LC347_前K个高频元素 {
      * 空间复杂度：O(n)
      */
     public int[] topKFrequent(int[] nums, int k) {
-        // TODO: 实现你的解法
-        return new int[0];
+        // 1. 统计每个元素出现的频率
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        // 2. 用最小堆维护前k个高频元素
+        PriorityQueue<Map.Entry<Integer, Integer>> minHeap =
+            new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+            minHeap.offer(entry);
+            if (minHeap.size() > k) {
+                minHeap.poll(); // 堆大小超过k时弹出最小的
+            }
+        }
+        int[] res = new int[k];
+        for (int i = k - 1; i >= 0; i--) {
+            res[i] = minHeap.poll().getKey();
+        }
+        return res;
     }
     
     /**
@@ -38,8 +57,24 @@ public class LC347_前K个高频元素 {
      * 空间复杂度：O(n)
      */
     public int[] topKFrequent2(int[] nums, int k) {
-        // TODO: 实现你的解法
-        return new int[0];
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        // 桶的下标是频率，值是出现该频率的所有数
+        List<Integer>[] buckets = new List[nums.length + 1];
+        for (int key : freqMap.keySet()) {
+            int freq = freqMap.get(key);
+            if (buckets[freq] == null) buckets[freq] = new ArrayList<>();
+            buckets[freq].add(key);
+        }
+        
+        List<Integer> res = new ArrayList<>();
+        for (int i = buckets.length - 1; i >= 0 && res.size() < k; i--) {
+            if (buckets[i] != null) res.addAll(buckets[i]);
+        }
+        // 只取前k个
+        return res.stream().mapToInt(x -> x).limit(k).toArray();
     }
     
     /**
@@ -53,12 +88,12 @@ public class LC347_前K个高频元素 {
     }
     
     public static void main(String[] args) {
-        LC347_前K个高频元素 solution = new LC347_前K个高频元素();
+
         
         // 测试用例
         int[][] testCases = {
-            {1, 1, 1, 2, 2, 3}, 2,           // 期望输出: [1,2]
-            {1}, 1,                           // 期望输出: [1]
+            ({1, 1, 1, 2, 2, 3}, 2,)           // 期望输出: [1,2]
+          ()  {1}, 1,_                           // 期望输出: [1]
             {1, 1, 2, 2, 3, 3, 3}, 2,        // 期望输出: [3,1] 或 [3,2]
             {1, 2, 3, 4, 5}, 3,              // 期望输出: [1,2,3] 或任意三个元素
             {1, 1, 1, 2, 2, 3, 3, 3, 3}, 2   // 期望输出: [3,1]
@@ -67,7 +102,7 @@ public class LC347_前K个高频元素 {
         for (int i = 0; i < testCases.length; i += 2) {
             int[] nums = testCases[i];
             int k = testCases[i + 1];
-            int[] result = solution.topKFrequent(nums, k);
+            int[] result = topKFrequent(nums, k);
             System.out.println("测试用例 " + (i/2 + 1) + ":");
             System.out.println("输入: nums = " + Arrays.toString(nums) + ", k = " + k);
             System.out.println("输出: " + Arrays.toString(result));

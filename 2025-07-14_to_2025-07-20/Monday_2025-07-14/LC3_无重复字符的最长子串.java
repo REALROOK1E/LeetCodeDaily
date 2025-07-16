@@ -31,7 +31,7 @@ public class LC3_无重复字符的最长子串 {
      * 空间复杂度：O(min(m, n))，其中m是字符集大小
      */
     public static int lengthOfLongestSubstring(String s) {
-        // TODO: 实现你的解法
+
         int l=0;
         int r=0;
         int ans=0;
@@ -44,7 +44,7 @@ public class LC3_无重复字符的最长子串 {
             set.add(c[r++]);
          ans=Math.max(ans,set.size());   
         }
-        return 0;
+        return ans;
     }
     
     /**

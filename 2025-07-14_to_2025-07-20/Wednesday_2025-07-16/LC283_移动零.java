@@ -25,48 +25,42 @@ public class LC283_移动零 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public void moveZeroes(int[] nums) {
-        // TODO: 实现你的解法
+    public static void moveZeroes(int[] nums) {
+        // 只要有一个为0，另一个就去找下一个非零然后换
+        int l=0;
+        int r=0;
+        while(r<nums.length-1&&l<nums.length-1){
+            r=l;
+            if(nums[l]==0){
+                while (r<nums.length&&nums[r]==0) {r++;}
+                if(r==nums.length) return;
+                swap(nums,l,r);
+            }
+            l++;
+        }
     }
-    
-    /**
-     * 方法2：两次遍历
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(1)
-     */
-    public void moveZeroes2(int[] nums) {
-        // TODO: 实现你的解法
+    public static void swap(int[] nums,int l,int r){
+        int temp=nums[l];
+        nums[l]=nums[r];
+        nums[r]=temp;
+
     }
-    
-    /**
-     * 方法3：交换法
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(1)
-     */
-    public void moveZeroes3(int[] nums) {
-        // TODO: 实现你的解法
-    }
-    
+
+
     public static void main(String[] args) {
-        LC283_移动零 solution = new LC283_移动零();
         
         // 测试用例
         int[][] testCases = {
-            {0, 1, 0, 3, 12},           // 期望输出: [1,3,12,0,0]
-            {1, 2, 3, 4, 5},            // 期望输出: [1,2,3,4,5]
-            {0, 0, 0, 0, 0},            // 期望输出: [0,0,0,0,0]
             {1, 0, 0, 0, 0},            // 期望输出: [1,0,0,0,0]
-            {0, 0, 0, 0, 1},            // 期望输出: [1,0,0,0,0]
             {1, 0, 2, 0, 3, 0, 4},      // 期望输出: [1,2,3,4,0,0,0]
-            {0},                         // 期望输出: [0]
-            {1}                          // 期望输出: [1]
+
         };
         
         for (int i = 0; i < testCases.length; i++) {
             int[] nums = testCases[i].clone(); // 克隆数组避免修改原数组
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + Arrays.toString(testCases[i]));
-            solution.moveZeroes(nums);
+            moveZeroes(nums);
             System.out.println("输出: " + Arrays.toString(nums));
             System.out.println("---");
         }

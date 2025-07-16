@@ -27,30 +27,27 @@ public class LC84_柱状图中最大的矩形 {
      * 空间复杂度：O(n)
      */
     public int largestRectangleArea(int[] heights) {
-        // TODO: 实现你的解法
-        return 0;
+       int[] q=new int[heights.length] ;
+       int r=0;
+       int ans=0;
+       for (int i = 0; i < heights.length; i++) {
+        while(r>0&&heights[i]<heights[q[r-1]]){
+            int height=heights[q[--r]];
+            int left= (r==0)?-1:q[r-1];//左边界：再往左一格
+            int width= i-left-1;
+                ans=Math.max(ans,height*width);
+        }
+        q[r++]=i;
+       }
+       int i=heights.length;
+       while(r>0){
+        int height=heights[q[--r]];
+        int left= (r==0)?-1:q[r-1];//左边界：再往左一格
+        int width= i-left-1;
+        ans=Math.max(ans,height*width);
+       }
+        return ans;
     }
-    
-    /**
-     * 方法2：暴力解法（超时）
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public int largestRectangleArea2(int[] heights) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
-    /**
-     * 方法3：分治法
-     * 时间复杂度：O(n log n)
-     * 空间复杂度：O(log n)
-     */
-    public int largestRectangleArea3(int[] heights) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
     public static void main(String[] args) {
         LC84_柱状图中最大的矩形 solution = new LC84_柱状图中最大的矩形();
         

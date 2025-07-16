@@ -30,9 +30,33 @@ public class LC239_滑动窗口最大值 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int l=0;
         int r=0;
+        int head=0;
+        int tail=0;
+        int [] ans=new int[nums.length-k+1];
         int [] q=new int[nums.length];
+        for (int i = 0; i < k-1; i++) {
+            while(tail>head&&nums[i]>nums[q[tail-1]]){
+                tail--;
+            }
+            r++;
+            q[tail++]=i;
+        }
         
-        return new int[0];
+        for (int i = 0; i < q.length-k+1; i++) {
+
+            while(tail>head&&nums[r]>nums[q[tail-1]]){
+                tail--;
+            }
+            q[tail++]=r;
+            ans[i]=nums[q[head]];//记录答案
+            if(l==q[head]) head++;
+            l++;
+            r++;
+        }
+    
+           
+
+        return ans;
     }
     
     

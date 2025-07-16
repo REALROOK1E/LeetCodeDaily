@@ -54,10 +54,19 @@ public class LC189_轮转数组 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public void rotate3(int[] nums, int k) {
-        // TODO: 实现你的解法
+    public static void rotate3(int[] nums, int k) {
+        reverse(nums,0,nums.length);
+        reverse(nums,0,k-1);
+        reverse(nums,k,nums.length);
     }
-    
+    public static void reverse(int [] nums,int l,int r){
+
+        while(l<r){
+            int temp=nums[l];
+            nums[l++]=nums[r];
+            nums[r--]=temp;
+        }
+    }
     /**
      * 方法4：暴力解法（超时）
      * 时间复杂度：O(n*k)

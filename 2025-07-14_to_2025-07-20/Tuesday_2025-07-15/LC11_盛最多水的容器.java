@@ -26,25 +26,20 @@ public class LC11_盛最多水的容器 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public int maxArea(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
-    /**
-     * 方法2：暴力解法（超时）
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public int maxArea2(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int maxArea(int[] h) {
+        int l=0;
+        int r=h.length-1;
+        int ans=0;
+        while(l<r){
+            ans=Math.max(ans,(r-l)*(h[l]>h[r]?h[r]:h[l]));
+            if(h[l]<h[r]) l++;
+            else r--;
+        }
+        return ans;
     }
     
     public static void main(String[] args) {
-        LC11_盛最多水的容器 solution = new LC11_盛最多水的容器();
-        
-        // 测试用例
+
         int[][] testCases = {
             {1, 8, 6, 2, 5, 4, 8, 3, 7},  // 期望输出: 49
             {1, 1},                          // 期望输出: 1
@@ -55,7 +50,7 @@ public class LC11_盛最多水的容器 {
         
         for (int i = 0; i < testCases.length; i++) {
             int[] height = testCases[i];
-            int result = solution.maxArea(height);
+            int result = maxArea(height);
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + java.util.Arrays.toString(height));
             System.out.println("输出: " + result);
