@@ -6,25 +6,12 @@ import java.util.*;
  * 题目描述：
  * 给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，
  * 使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
- * 
  * 我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
- * 
- * 必须在不使用库的sort函数的情况下解决这个问题。
- * 
  * 示例：
  * 输入: nums = [2,0,2,1,1,0]
  * 输出: [0,0,1,1,2,2]
- * 
  * 输入: nums = [2,0,1]
- * 输出: [0,1,2]
- * 
- * 提示：
- * n == nums.length
- * 1 <= n <= 300
- * nums[i] 为 0、1 或 2
- * 
- * 进阶：
- * 你能想出一个仅使用常数空间的一趟扫描算法吗？
+ * 输出: [0,1,2] * 你能想出一个仅使用常数空间的一趟扫描算法吗？
  */
 public class LC75_颜色分类 {
     
@@ -33,9 +20,8 @@ public class LC75_颜色分类 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public void sortColors(int[] nums) {
-        // TODO: 实现你的解法
-    }
+
+
     
     /**
      * 方法2：两次遍历
@@ -61,9 +47,31 @@ public class LC75_颜色分类 {
      * 空间复杂度：O(1)
      */
     public void sortColors4(int[] nums) {
-        // TODO: 实现你的解法
+    int p=nums.length-1;
+    while(nums[p]!=1){
+        p--;
+    }
+    int l=0;
+    int r=nums.length-1;
+
+    while(l<r){
+        if(nums[l]>nums[p]) {
+            swap(nums,l,r);
+            r--;
+        }else{
+
+            
+        }
+    }
+
+
     }
     
+    private void swap(int[] nums, int l, int r) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'swap'");
+    }
+
     public static void main(String[] args) {
         LC75_颜色分类 solution = new LC75_颜色分类();
         

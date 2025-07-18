@@ -38,76 +38,42 @@ import java.util.*;
  * 
  * 进阶：你能否仅用一个队列来实现栈。
  */
-public class LC225_用队列实现栈 {
-    
-    /**
-     * 方法1：双队列法
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    class MyStack {
-        // TODO: 实现你的解法
-        
-        public MyStack() {
-            // TODO: 初始化
-        }
-        
-        public void push(int x) {
-            // TODO: 实现push方法
-        }
-        
-        public int pop() {
-            // TODO: 实现pop方法
-            return 0;
-        }
-        
-        public int top() {
-            // TODO: 实现top方法
-            return 0;
-        }
-        
-        public boolean empty() {
-            // TODO: 实现empty方法
-            return false;
-        }
-    }
+
     
     /**
      * 方法2：单队列法
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      */
-    class MyStack2 {
-        // TODO: 实现你的解法
-        
-        public MyStack2() {
-            // TODO: 初始化
+    class MyStack {
+        int[] s;
+        int r;
+        public MyStack() {
+            this. s=new int[1001];
+            this. r=0;
         }
-        
+
         public void push(int x) {
-            // TODO: 实现push方法
+            s[r++]=x;
         }
         
         public int pop() {
-            // TODO: 实现pop方法
-            return 0;
+            return s[--r];
         }
         
         public int top() {
-            // TODO: 实现top方法
-            return 0;
+            return s[r];
         }
         
         public boolean empty() {
-            // TODO: 实现empty方法
-            return false;
+            return r==0;
         }
-    }
+    
     
     public static void main(String[] args) {
         System.out.println("=== 测试方法1 ===");
-        LC225_用队列实现栈 solution = new LC225_用队列实现栈();
-        MyStack myStack = solution.new MyStack();
+
+        MyStack myStack = new MyStack();
         
         // 测试用例
         myStack.push(1);
@@ -131,15 +97,5 @@ public class LC225_用队列实现栈 {
         boolean empty2 = myStack.empty();
         System.out.println("empty() = " + empty2 + " (期望: true)");
         
-        System.out.println("\\n=== 测试方法2 ===");
-        MyStack2 myStack2 = solution.new MyStack2();
-        
-        myStack2.push(1);
-        myStack2.push(2);
-        myStack2.push(3);
-        
-        System.out.println("top() = " + myStack2.top());
-        System.out.println("pop() = " + myStack2.pop());
-        System.out.println("top() = " + myStack2.top());
     }
 } 

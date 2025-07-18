@@ -39,59 +39,48 @@ import java.util.*;
 public class LC155_最小栈 {
     
     /**
-     * 方法1：使用两个栈
-     * 时间复杂度：O(1)
-     * 空间复杂度：O(n)
-     */
-    class MinStack {
-        // TODO: 实现你的解法
-        
-        public MinStack() {
-            // TODO: 初始化
-        }
-        
-        public void push(int val) {
-            // TODO: 实现push方法
-        }
-        
-        public void pop() {
-            // TODO: 实现pop方法
-        }
-        
-        public int top() {
-            // TODO: 实现top方法
-            return 0;
-        }
-        
-        public int getMin() {
-            // TODO: 实现getMin方法
-            return 0;
-        }
-    }
-    
-    /**
      * 方法2：使用一个栈存储差值
      * 时间复杂度：O(1)
      * 空间复杂度：O(1)
      */
     class MinStack2 {
         // TODO: 实现你的解法
-        
+        int dif;
+        int min;
+        //pop还原前一个最小值
+        //push更新最小值
+        int[] s;
+        int r=0;
         public MinStack2() {
-            // TODO: 初始化
+            this.dif=0;
+            this.min=0;
+            this.s=new int[30001];
         }
         
         public void push(int val) {
-            // TODO: 实现push方法
+
+            if(r==0){
+                 min=val;
+                dif=val;
+                s[r++]=0;
+                }else  {
+                     dif=val-min;
+                     if(dif<0){
+                        min=val;
+                     }
+                     s[r++]=dif;
+            }
         }
         
         public void pop() {
-            // TODO: 实现pop方法
+            if(s[r--]<0){
+                min=min-dif;
+            }
+
         }
         
         public int top() {
-            // TODO: 实现top方法
-            return 0;
+            return s[r-1];
         }
         
         public int getMin() {

@@ -10,16 +10,6 @@ import java.util.*;
  * 示例：
  * 输入: temperatures = [73,74,75,71,69,72,76,73]
  * 输出: [1,1,4,2,1,1,0,0]
- * 
- * 输入: temperatures = [30,40,50,60]
- * 输出: [1,1,1,0]
- * 
- * 输入: temperatures = [30,60,90]
- * 输出: [1,1,0]
- * 
- * 提示：
- * 1 <= temperatures.length <= 10^5
- * 30 <= temperatures[i] <= 100
  */
 public class LC739_每日温度 {
     
@@ -28,33 +18,46 @@ public class LC739_每日温度 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      */
-    public int[] dailyTemperatures(int[] temperatures) {
-        // TODO: 实现你的解法
-        return new int[0];
-    }
-    
-    /**
-     * 方法2：暴力解法（超时）
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public int[] dailyTemperatures2(int[] temperatures) {
-        // TODO: 实现你的解法
-        return new int[0];
-    }
-    
+    public static int[] dailyTemperatures(int[] temperatures) {
+       int s[] =new int[temperatures.length];
+       int r=0;
+       int [] ans=new int[temperatures.length];
+      for (int i = 0; i < temperatures.length; i++) {
+        while(r>0&&temperatures[s[r-1]]<temperatures[i]){
+            r--;
+            ans[s[r]]=i-s[r];
+        }
+        s[r++]=i;
+       }
+        return ans;
+    } 
     /**
      * 方法3：从右到左遍历
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
+     * [73, 74, 75, 71, 69, 72, 76, 73]
+     * 
      */
-    public int[] dailyTemperatures3(int[] temperatures) {
-        // TODO: 实现你的解法
-        return new int[0];
+
+    public static int[] dailyTemperatures3(int[] temperatures) {
+
+        int ans[] =new int[temperatures.length];
+        int rec=temperatures.length-1;
+
+        for (int r=temperatures.length-1;r>=0; r--) {
+            while(r>=0&&temperatures[r]>temperatures[rec]){
+                r--;
+            }
+            //r就是第一个需要算答案的
+            while(rec>r&&temperatures[r]<temperatures[rec]){
+                rec--;
+            }
+            ans[r]=rec-r+1;
+        }
+        return ans;
     }
-    
-    public static void main(String[] args) {
-        LC739_每日温度 solution = new LC739_每日温度();
+        public static void main(String[] args) {
+
         
         // 测试用例
         int[][] testCases = {
@@ -68,7 +71,7 @@ public class LC739_每日温度 {
         
         for (int i = 0; i < testCases.length; i++) {
             int[] temperatures = testCases[i];
-            int[] result = solution.dailyTemperatures(temperatures);
+            int[] result = dailyTemperatures3(temperatures);
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + Arrays.toString(temperatures));
             System.out.println("输出: " + Arrays.toString(result));

@@ -41,46 +41,50 @@ import java.util.*;
  * 
  * 平常使用的算式则是一种中缀表达式，如 ( 1 + 2 ) * ( 3 + 4 ) 。
  * 该算式的逆波兰表达式写法为 ( ( 1 2 + ) ( 3 4 + ) * ) 。
- * 逆波兰表达式主要有以下两个优点：
- * 
- * 去掉括号后表达式无歧义，上式即便写成 1 2 + 3 4 + * 也可以依据次序计算出正确结果。
- * 适合用栈操作运算：遇到数字则入栈；遇到算符则取出栈顶两个数字进行计算，并将结果压入栈中。
+ 
  */
 public class LC150_逆波兰表达式求值 {
-    
-    /**
-     * 方法1：栈
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public int evalRPN(String[] tokens) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
-    /**
-     * 方法2：递归
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public int evalRPN2(String[] tokens) {
-        // TODO: 实现你的解法
-        return 0;
-    }
     
     /**
      * 方法3：数组模拟栈
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      */
-    public int evalRPN3(String[] tokens) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int evalRPN(String[] tokens) {
+        // 遇到运算符号——取出来两个——计算后入栈，遇到数字直接入栈
+        int r=0;
+        int [] q=new int [tokens.length];
+        int ans=0;
+        for (int i = 0; i < q.length; i++) {
+         
+                switch (tokens[i]) {
+                case "+":
+                     ans= q[--r]+q[--r];
+                     q[r++]=ans;
+                    break;
+            
+                case "-":
+                ans= q[r-2]-q[r-1];
+                         r-=2;
+                         q[r++]=ans;
+                      break;
+                case "*":
+                ans= q[--r]*q[--r];
+                    q[r++]=ans;
+                      break;
+                case "/":
+                ans= q[r-2]/q[r-1];
+                       r-=2;
+                       q[r++]=ans;
+                     break;
+                default: q[r++]=Integer.parseInt(tokens[i]);
+                }
+            
+        }
+        return q[0];
     }
-    
     public static void main(String[] args) {
-        LC150_逆波兰表达式求值 solution = new LC150_逆波兰表达式求值();
-        
+
         // 测试用例
         String[][] testCases = {
             {"2", "1", "+", "3", "*"},                    // 期望输出: 9
@@ -95,7 +99,7 @@ public class LC150_逆波兰表达式求值 {
         
         for (int i = 0; i < testCases.length; i++) {
             String[] tokens = testCases[i];
-            int result = solution.evalRPN(tokens);
+            int result = evalRPN(tokens);
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + Arrays.toString(tokens));
             System.out.println("输出: " + result);
