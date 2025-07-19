@@ -22,45 +22,51 @@ import java.util.*;
  */
 public class LC42_接雨水 {
     
+
+    
     /**
-     * 方法1：动态规划（预计算左右最大值）
+     * 方法2：双指针预处理
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      */
-    public int trap(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int trap(int[] height) {
+        //两侧最大值的最小值*它和当前的高度差
+        int lmax=0;
+        int[] max=new int[height.length];
+        int ans=0;
+        for (int i = 0; i < height.length; i++) {
+            max[i]=lmax;
+            if(height[i]>height[lmax]) lmax=i;        
+        }
+        int rmax=height.length-1;
+
+     for (int r = height.length-2; r >0; r--){
+        int min=Math.min(height[max[r]], height[rmax]);
+        ans+=min>height[r]?(min-height[r]):0;
+        if(height[r]>height[rmax]) rmax=r;     
+     }
+        return ans;
     }
     
-    /**
-     * 方法2：双指针
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(1)
-     */
-    public int trap2(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
+    public static int trap2(int[] height) {
+        //两侧最大值的最小值*它和当前的高度差
+        int lmax=0;
+        int[] max=new int[height.length];
+        int ans=0;
+        for (int i = 0; i < height.length; i++) {
+            max[i]=lmax;
+            if(height[i]>height[lmax]) lmax=i;        
+        }
+        int rmax=height.length-1;
+
+     for (int r = height.length-2; r >0; r--){
+        int min=Math.min(height[max[r]], height[rmax]);
+        ans+=min>height[r]?(min-height[r]):0;
+        if(height[r]>height[rmax]) rmax=r;     
+     }
+        return ans;
     }
     
-    /**
-     * 方法3：单调栈
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public int trap3(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
-    /**
-     * 方法4：暴力解法（超时）
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public int trap4(int[] height) {
-        // TODO: 实现你的解法
-        return 0;
-    }
     
     public static void main(String[] args) {
         LC42_接雨水 solution = new LC42_接雨水();
@@ -83,7 +89,7 @@ public class LC42_接雨水 {
         
         for (int i = 0; i < testCases.length; i++) {
             int[] height = testCases[i];
-            int result = solution.trap(height);
+            int result =trap(height);
             System.out.println("测试用例 " + (i + 1) + ":");
             System.out.println("输入: " + Arrays.toString(height));
             System.out.println("输出: " + result);

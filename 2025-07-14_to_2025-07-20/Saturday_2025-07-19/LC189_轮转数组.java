@@ -31,14 +31,6 @@ import java.util.*;
  */
 public class LC189_轮转数组 {
     
-    /**
-     * 方法1：使用额外数组
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public void rotate(int[] nums, int k) {
-        // TODO: 实现你的解法
-    }
     
     /**
      * 方法2：环状替换
@@ -58,14 +50,6 @@ public class LC189_轮转数组 {
         // TODO: 实现你的解法
     }
     
-    /**
-     * 方法4：暴力解法（超时）
-     * 时间复杂度：O(n*k)
-     * 空间复杂度：O(1)
-     */
-    public void rotate4(int[] nums, int k) {
-        // TODO: 实现你的解法
-    }
     
     public static void main(String[] args) {
         LC189_轮转数组 solution = new LC189_轮转数组();

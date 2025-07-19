@@ -55,7 +55,7 @@ public class LC75_颜色分类 {
     int r=nums.length-1;
 
     while(l<r){
-        if(nums[l]>nums[p]) {
+        while(nums[l]<nums[p]) {
             swap(nums,l,r);
             r--;
         }else{

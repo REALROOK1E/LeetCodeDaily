@@ -5,14 +5,11 @@ import java.util.*;
  * 
  * 题目描述：
  * 给你一个整数数组 nums ，你需要找出一个连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
- * 
  * 请你找出符合题意的最短子数组，并输出它的长度。
- * 
  * 示例：
  * 输入: nums = [2,6,4,8,10,9,15]
  * 输出: 5
  * 解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
- * 
  * 输入: nums = [1,2,3,4]
  * 输出: 0
  * 
@@ -27,45 +24,21 @@ import java.util.*;
  */
 public class LC581_最短无序连续子数组 {
     
-    /**
-     * 方法1：排序比较
-     * 时间复杂度：O(n log n)
-     * 空间复杂度：O(n)
-     */
-    public int findUnsortedSubarray(int[] nums) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
+
     /**
      * 方法2：一次遍历
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public int findUnsortedSubarray2(int[] nums) {
-        // TODO: 实现你的解法
+    public int findUnsortedSubarray(int[] nums) {
+        int l=0;
+        int r=0;
+        while(r<nums.length){
+
+        }
         return 0;
     }
     
-    /**
-     * 方法3：单调栈
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public int findUnsortedSubarray3(int[] nums) {
-        // TODO: 实现你的解法
-        return 0;
-    }
-    
-    /**
-     * 方法4：暴力解法（超时）
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public int findUnsortedSubarray4(int[] nums) {
-        // TODO: 实现你的解法
-        return 0;
-    }
     
     public static void main(String[] args) {
         LC581_最短无序连续子数组 solution = new LC581_最短无序连续子数组();

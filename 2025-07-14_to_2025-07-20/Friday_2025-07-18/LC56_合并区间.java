@@ -29,8 +29,21 @@ public class LC56_合并区间 {
      * 空间复杂度：O(log n)
      */
     public int[][] merge(int[][] intervals) {
-        // TODO: 实现你的解法
-        return new int[0][0];
+    
+    
+    Arrays.sort(intervals,(a,b)->(a[0]-b[0]));
+
+    List<int []> ans=new ArrayList<>();
+        for(int[] p:intervals){
+            int size=ans.size();
+            if(size>0&&ans.get(size-1)[1]>p[0]){
+                ans.get(size-1)[1]=Math.max(ans.get(size-1)[1],p[1]);
+            }else {
+                ans.add(p);
+            }
+    }
+
+        return ans.toArray(new int [ans.size()][]);
     }
     
     /**

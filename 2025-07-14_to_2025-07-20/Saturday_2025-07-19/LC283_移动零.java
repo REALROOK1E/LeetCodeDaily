@@ -22,66 +22,36 @@ import java.util.*;
 public class LC283_移动零 {
     
     /**
-     * 方法1：双指针
+     * 方法1：双指针 扔雪球
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public void moveZeroes(int[] nums) {
-        // TODO: 实现你的解法
+    public static void moveZeroes(int[] nums) {
+        int l=0;
+        int r=0;
+        while(r<nums.length){
+            if(nums[r]!=0){
+                swap(nums, l, r);
+                l++;
+            }
+            r++;
+        }
     }
-    
-    /**
-     * 方法2：两次遍历
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(1)
-     */
-    public void moveZeroes2(int[] nums) {
-        // TODO: 实现你的解法
+    public static void swap(int [] nums,int l,int r){
+        int temp=nums[l];
+        nums[l]=nums[r];
+        nums[r]=temp;
     }
-    
-    /**
-     * 方法3：使用额外数组（不符合要求，但可以理解）
-     * 时间复杂度：O(n)
-     * 空间复杂度：O(n)
-     */
-    public void moveZeroes3(int[] nums) {
-        // TODO: 实现你的解法
-    }
-    
-    /**
-     * 方法4：冒泡排序思想
-     * 时间复杂度：O(n^2)
-     * 空间复杂度：O(1)
-     */
-    public void moveZeroes4(int[] nums) {
-        // TODO: 实现你的解法
-    }
-    
+
     public static void main(String[] args) {
-        LC283_移动零 solution = new LC283_移动零();
-        
-        // 测试用例
-        int[][] testCases = {
-            {0, 1, 0, 3, 12},           // 期望输出: [1,3,12,0,0]
-            {1},                         // 期望输出: [1]
-            {0},                         // 期望输出: [0]
-            {1, 0},                     // 期望输出: [1,0]
-            {0, 1},                     // 期望输出: [1,0]
-            {1, 2, 3, 4, 5},           // 期望输出: [1,2,3,4,5]
-            {0, 0, 0, 0, 0},           // 期望输出: [0,0,0,0,0]
-            {1, 2, 0, 0, 3, 4, 0, 5},  // 期望输出: [1,2,3,4,5,0,0,0]
-            {0, 0, 0, 1, 2, 3},        // 期望输出: [1,2,3,0,0,0]
-            {1, 0, 2, 0, 3, 0, 4},     // 期望输出: [1,2,3,4,0,0,0]
-            {0, 1, 0, 2, 0, 3, 0, 4, 0, 5} // 期望输出: [1,2,3,4,5,0,0,0,0,0]
-        };
-        
-        for (int i = 0; i < testCases.length; i++) {
-            int[] nums = testCases[i].clone(); // 克隆数组避免修改原数组
-            System.out.println("测试用例 " + (i + 1) + ":");
-            System.out.println("输入: " + Arrays.toString(testCases[i]));
-            solution.moveZeroes(nums);
+
+    
+     
+            int[] nums = {0,1,0,3,12}; // 克隆数组避免修改原数组
+            System.out.println("输入: " + Arrays.toString(nums);
+            moveZeroes(nums);
             System.out.println("输出: " + Arrays.toString(nums));
             System.out.println("---");
-        }
+        
     }
 } 

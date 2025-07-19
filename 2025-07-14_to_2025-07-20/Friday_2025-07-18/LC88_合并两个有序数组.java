@@ -59,14 +59,6 @@ public class LC88_合并两个有序数组 {
         // TODO: 实现你的解法
     }
     
-    /**
-     * 方法3：使用Arrays.sort（不推荐，但可以理解）
-     * 时间复杂度：O((m+n) log(m+n))
-     * 空间复杂度：O(1)
-     */
-    public void merge3(int[] nums1, int m, int[] nums2, int n) {
-        // TODO: 实现你的解法
-    }
     
     public static void main(String[] args) {
         LC88_合并两个有序数组 solution = new LC88_合并两个有序数组();
