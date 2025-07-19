@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * SearchUtils - Java小功能程序
- * 生成时间: 2025-07-15
+ * 生成时间: 2025-07-19
  * 功能描述: 实现一个Java的小功能的程序
  */
 public class SearchUtils {
